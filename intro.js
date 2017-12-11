@@ -31,10 +31,38 @@ var rm = function(){
     this.remove();
 }
 
-var elements = document.getElementsByTagName("li");
+var e1 = thelist.getElementsByTagName("li");
 
-for (x = 0; x < elements.length; x++){
-    elements[x].addEventListener("mouseover", heading);
-    elements[x].addEventListener("mouseleave", og);
-    elements[x].addEventListener("click", rm);
+for (x = 0; x < e1.length; x++){
+    e1[x].addEventListener("mouseover", heading);
+    e1[x].addEventListener("mouseleave", og);
+    e1[x].addEventListener("click", rm);
 };
+
+var b2 = document.getElementById("b2");
+
+var secondlist = document.getElementById("secondlist");
+var e2 = secondlist.getElementsByTagName("li");
+
+var fib = function(n){    
+    var start = 0;
+    var next = 1;
+    var k;
+    
+    while (n > 0){
+	k = next;
+	next = next +start;
+	start = k;
+	n = n-1;
+    }
+    
+    return start;
+}
+
+var addFib = function(){
+    var num = document.createElement("li");
+    num.innerHTML = fib(e2.length);
+    secondlist.appendChild(num);
+};
+
+b2.addEventListener("click", addFib);
